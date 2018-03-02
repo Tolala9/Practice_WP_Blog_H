@@ -7,7 +7,7 @@
 
 			<article class="post page">
 
-
+				<!-- Sub Menu -->
 				<?php  
 				if (has_shidlren() OR $post->post_parent > 0) { ?>
 
@@ -35,7 +35,7 @@
 					</nav>
 
 				<?php } ?>
-				
+				<!-- /Sub Menu -->
 
 				<h2><?php the_title(); ?></h2>
 				<?php the_content() ?>

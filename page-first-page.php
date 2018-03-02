@@ -7,7 +7,7 @@
 
 			<article class="post page">
 			
-								<!-- Sub Menu -->
+				<!-- Sub Menu -->
 				<?php  
 				if (has_shidlren() OR $post->post_parent > 0) { ?>
 
