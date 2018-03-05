@@ -1,4 +1,5 @@
 <?php 
+show_admin_bar( false );
 
 // Connect style.css to header.php
 function WPThemeDevPrac_resources(){
@@ -51,6 +52,9 @@ register_nav_menus(array(
 
 }
 add_action('after_setup_theme', 'learningWordPress_setup');
+
+
+
 
 
 
