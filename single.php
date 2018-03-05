@@ -5,15 +5,7 @@
 	if (have_posts()) :
 		while (have_posts()) : the_post(); ?>
 
-			<article class="post <?php if ( has_post_thumbnail() ) { ?>has-thumbnail <?php } ?>"> 
-
-			<!-- Post Thumbnail -->
-			<div class="post-thumbnail">
-
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('small-thumbnail');?></a>
-				
-			</div>
-
+			<article class="post">
 
 			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 			<!-- Post info -->
@@ -35,9 +27,11 @@
 			
 			<!-- /Post info -->
 			
+			<?php 
+				the_post_thumbnail('banner-thumbnail');
+			 ?>
 
-
-			<?php the_content('Continue reading &raquo;') ?>
+			<?php the_content(); ?>
 
 			</article>
 

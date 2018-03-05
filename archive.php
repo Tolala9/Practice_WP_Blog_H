@@ -5,7 +5,7 @@
 	if (have_posts()) :
 		// For archive
 		?>
-
+		
 		<h2><?php 
 
 			if (is_category()) {

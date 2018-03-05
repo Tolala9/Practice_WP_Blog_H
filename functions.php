@@ -10,12 +10,7 @@ add_action('wp_enqueue_scripts', 'WPThemeDevPrac_resources');
 
 
 
-// Navigation Menus
-register_nav_menus(array(
-	'primary' => __('Primary Menu'),
-	'footer' => __('Footer Menu'),
 
-));
 
 // Get top ancestor
 function get_top_ancestor_id() {
@@ -40,6 +35,26 @@ function has_shidlren() {
 	return count($pages);
 
 }
+
+// Theme SetUp
+function learningWordPress_setup() {
+	// Navigation Menus
+register_nav_menus(array(
+	'primary' => __('Primary Menu'),
+	'footer' => __('Footer Menu'),
+
+));
+	// Add Featured image support
+	add_theme_support('post-thumbnails');
+	add_image_size('small-thumbnail', 180, 120, true);
+	add_image_size('banner-thumbnail', 920, 350, array('left', 'top')); 
+
+}
+add_action('after_setup_theme', 'learningWordPress_setup');
+
+
+
+
 
 
 
