@@ -50,7 +50,12 @@ register_nav_menus(array(
 	add_image_size('small-thumbnail', 180, 120, array('left', 'top')); 
 	add_image_size('banner-thumbnail', 920, 350, array('left', 'top')); 
 
+	// Add post format support
+	add_theme_support('post-formats', array('aside', 'gallery' , 'link'));
+
 }
+
+
 add_action('after_setup_theme', 'learningWordPress_setup');
 
 
