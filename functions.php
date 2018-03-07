@@ -39,6 +39,21 @@ function has_shidlren() {
 
 // Theme SetUp
 function learningWordPress_setup() {
+
+	// siebars and widgetized areas
+register_sidebar( array(
+		'name'          => 'Home right sidebar',
+		'id'            => 'home_right_1',
+		'before_widget' => '<div class="widget-item">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );
+register_sidebar( array(
+		'name'          => 'Footer Area 1',
+		'id'            => 'footer_area_1',
+		
+	) );
 	// Navigation Menus
 register_nav_menus(array(
 	'primary' => __('Primary Menu'),
@@ -52,6 +67,8 @@ register_nav_menus(array(
 
 	// Add post format support
 	add_theme_support('post-formats', array('aside', 'gallery' , 'link'));
+
+	
 
 }
 
@@ -69,4 +86,4 @@ add_action('after_setup_theme', 'learningWordPress_setup');
 
 
 
- ?>
+

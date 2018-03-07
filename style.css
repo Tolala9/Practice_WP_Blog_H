@@ -270,7 +270,7 @@ article.post-link a{
 
 /* Post Format Gallery Styles */
 article.post-gallery{
-	background-color: #222;
+	background-color: #666;
 	color: #fff;
 	padding: 20px;
 	margin-top: 20px;
@@ -280,4 +280,15 @@ article.post-gallery h2{
 }
 article.post-gallery img{
 	border: none!important;
+}
+
+/* Main column*/
+.main-column{
+	width: 66%;
+	float: left;
+}
+/* Asside column */
+.secondary-column{
+	width: 30%;
+	float: right;
 }

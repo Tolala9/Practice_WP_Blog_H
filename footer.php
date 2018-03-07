@@ -1,4 +1,8 @@
 <footer class="site-footer">
+	<!-- Footer Widgets -->
+		<div class="footer-widgets">
+			<?php dynamic_sidebar('footer_area_1') ?>
+		</div>
 
 	<nav class="site-nav">
 		<?php 

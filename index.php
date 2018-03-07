@@ -1,8 +1,15 @@
 <?php 
 
-	get_header();
+	get_header(); ?>
+	 <!-- Site Content -->
+	<div class="site-content clearfix">
+		<!-- Main Column -->
+ <div class="main-column">
 
-	if (have_posts()) :
+ 
+
+
+<?php	if (have_posts()) :
 		while (have_posts()) : the_post(); 
 
 
@@ -12,10 +19,17 @@
 
 	else :
 		echo "<p>No content found</p>";
-	endif;
+	endif; ?>
+
+	</div>
+
+	<?php get_sidebar(); ?>
 
 
+	</div>
 
-	get_footer();
+	 
+
+<?php	get_footer();
 
  ?>
