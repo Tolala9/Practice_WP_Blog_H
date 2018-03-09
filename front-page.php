@@ -1,56 +1,43 @@
-<?php 
-
-	get_header();
-
-	if (have_posts()) :
-		while (have_posts()) : the_post(); ?>
-
-			<article class="post page">
-
-				<!-- Sub Menu -->
-				<?php  
-				if (has_shidlren() OR $post->post_parent > 0) { ?>
 
 
-				<nav class="site-nav children-links clearfix">
+<?php get_header(); ?>
 
-					<span class="parent-link">
+<?php	if (have_posts()) :
+		while (have_posts()) : the_post(); 
 
-						<a href="<?php echo get_the_permalink(get_top_ancestor_id()); ?>">
-						<?php echo get_the_title(get_top_ancestor_id()); ?>
-							
-						</a></span> 
+			the_content();
 
-						<ul>
-							<?php  
-							$args = array(
-								'child_of' => get_top_ancestor_id(),
-								'title_li' => ''
-							)
-							?>
+				endwhile;
 
-							<?php wp_list_pages($args); ?>
-						</ul>
+				else:
 
-					</nav>
+				 echo '<p>No content found</p>';
 
-				<?php } ?>
-				<!-- /Sub Menu -->
-
-				<h3>custom html here</h3>
-				<?php the_content() ?>
-
-			</article>
+				 endif; 
+				
 
 
-		<?php endwhile; 
+				 //Category_1 Posts Loop
 
-	else :
-		echo "<p>No content found</p>";
-	endif;
+			 $CatPosts = new WP_Query('cat=5&posts_per_page=1');
+
+				if ($CatPosts->have_posts()) :
+				while ($CatPosts->have_posts()) : $CatPosts->the_post(); ?>
+
+					<h2><?php the_title(); ?></h2>
+
+				<?php endwhile;
+
+				else:
+
+				 	echo '<p>No content found</p>';
+
+				 endif; ?>
+				
+				
 
 
 
-	get_footer();
+<?php	get_footer();
 
  ?>
