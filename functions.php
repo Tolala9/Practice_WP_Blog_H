@@ -77,10 +77,65 @@ add_action('after_setup_theme', 'learningWordPress_setup');
 
 
 
+// Customize Appearence Options
+function learn_customize_register( $wp_customize ) {
+
+	$wp_customize->add_setting('lw_link_colors', array(
+		'default' => '#006ec3',
+		'transport' => 'refresh',
+	));
+
+	$wp_customize->add_setting('lw_button_colors', array(
+		'default' => '#006ec3',
+		'transport' => 'refresh',
+	));
+
+	$wp_customize->add_section('lw_theme_colors', array(
+		'title' =>__('Theme Colors', 'MyTheme'),
+		'priority' => 30,
+	));
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lw_link_color_control', array(
+			'label' =>__('Link Color', 'MyTheme'),
+			'section' => 'lw_theme_colors',
+			'settings' => 'lw_link_colors',
+			)));
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'lw_button_color_control', array(
+			'label' =>__('Button Color', 'MyTheme'),
+			'section' => 'lw_theme_colors',
+			'settings' => 'lw_button_colors',
+
+	)));
+
+}
+
+add_action('customize_register', 'learn_customize_register');
 
 
+//Customize Appearence output CSS
+function learn_customize_css() { ?>
+		<style type="text/css">
+			
+			a:link,
+			a:visited {
+				color: <?php echo get_theme_mod('lw_link_colors') ?> ;
+			}
 
+			.site-header nav ul li.current-menu-item a:link,
+			.site-header nav ul li.current-menu-item a:visited,
+			.site-header nav ul li.current-page-ancestor a:link,
+			.site-header nav ul li.current-page-ancestor a:visited {
+				background-color: <?php echo get_theme_mod('lw_link_colors') ?> ;
+			}
+			.hd-search #searchsubmit {
+				background-color: <?php echo get_theme_mod('lw_button_colors') ?> ;
+			}
 
+		</style>
+<?php }
+
+add_action('wp_head', 'learn_customize_css');
 
 
 
