@@ -37,6 +37,8 @@
 
 		 endwhile; 
 
+		 echo paginate_links();
+
 	else :
 		echo "<p>No content found</p>";
 	endif;

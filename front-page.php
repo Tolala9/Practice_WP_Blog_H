@@ -19,7 +19,7 @@
 
 				 //Category_1 Posts Loop
 
-			 $CatPosts = new WP_Query('cat=5&posts_per_page=1');
+			 $CatPosts = new WP_Query('cat=5&posts_per_page=2');
 
 				if ($CatPosts->have_posts()) :
 				while ($CatPosts->have_posts()) : $CatPosts->the_post(); ?>
@@ -32,8 +32,10 @@
 
 				 	echo '<p>No content found</p>';
 
-				 endif; ?>
-				
+				 endif; 
+
+				 wp_reset_postdata();
+				?>
 				
 
 
