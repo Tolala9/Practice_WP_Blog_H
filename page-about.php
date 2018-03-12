@@ -49,19 +49,19 @@
 		echo "<p>No content found</p>";
 	endif;
 
-		// costom
+		// costom query for about posts and for that pagination *dont work
 	?>
 	<h2>blog posts about us</h2>
 	<?php
 
 	$aboutPosts = new WP_Query(array(
-		'category_name' => 'category_2',
+		'category_name' => 'about',
 		'posts_per_page' => 1,
 	));
 
-	if ($aboutPosts->hane_posts()) :
+	if ($aboutPosts->have_posts()) :
 		while($aboutPosts->have_posts()) :
-			
+			$aboutPosts->the_post();
 				?>
 				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 				<?php
