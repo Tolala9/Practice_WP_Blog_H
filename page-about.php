@@ -49,14 +49,17 @@
 		echo "<p>No content found</p>";
 	endif;
 
-		// costom query for about posts and for that pagination *dont work
+		// costom query for about posts and for that pagination 
 	?>
 	<h2>blog posts about us</h2>
 	<?php
 
+	$ourCurrentPage = get_query_var('paged');
+
 	$aboutPosts = new WP_Query(array(
 		'category_name' => 'about',
-		'posts_per_page' => 1,
+		'posts_per_page' => 2,
+		'paged' => $ourCurrentPage
 	));
 
 	if ($aboutPosts->have_posts()) :
@@ -66,6 +69,16 @@
 				<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 				<?php
 		endwhile;
+ 		
+ 		// previous_posts_link();
+ 		// next_posts_link('next page', $aboutPosts->max_num_pages);
+ 		echo paginate_links(array(
+
+ 			'total' => $aboutPosts->max_num_pages
+
+ 		));
+
+
 	 endif;
 
 	get_footer();
