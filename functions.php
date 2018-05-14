@@ -137,6 +137,68 @@ function learn_customize_css() { ?>
 
 add_action('wp_head', 'learn_customize_css');
 
+// Add Footer callout section to admin appearance customize screen
+function lwp_footer_callout($wp_customize)
+{
+	$wp_customize->add_section('lwp-footer-callout-section', array(
+		'title' => 'Footer Callout'
+	));
+//display settings for section
+	$wp_customize->add_setting('lwp-footer-callout-display', array(
+		'default' => 'No'
+	));
+
+	//h2
+
+	$wp_customize->add_setting('lwp-footer-callout-headline', array(
+		'default' => 'Example Headline Text!!'
+	));
+
+	$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'lwp-footer-callout-display-control', array(
+			'label' => 'Display this section?',
+			'section' => 'lwp-footer-callout-section',
+			'settings' => 'lwp-footer-callout-display', //display settings for section added
+			'type' => 'select',
+			'choices' => array('No' => 'No', 'Yes' => 'Yes')
+	)));
+
+	//p
+	$wp_customize->add_setting('lwp-footer-callout-text', array(
+		'default' => 'Example Paragraph Text!!'
+	));
+
+	$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'lwp-footer-callout-text-control', array(
+			'label' => 'Text',
+			'section' => 'lwp-footer-callout-section',
+			'settings' => 'lwp-footer-callout-text',
+			'type' => 'textarea'
+	)));
+
+	//link
+	$wp_customize->add_setting('lwp-footer-callout-link');
+
+	$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'lwp-footer-callout-link-control', array(
+			'label' => 'link',
+			'section' => 'lwp-footer-callout-section',
+			'settings' => 'lwp-footer-callout-link',
+			'type' => 'dropdown-pages'
+	)));
+
+	//image
+	$wp_customize->add_setting('lwp-footer-callout-image');
+
+	$wp_customize->add_control( new WP_Customize_Cropped_Image_Control($wp_customize, 'lwp-footer-callout-image-control', array(
+			'label' => 'Image',
+			'section' => 'lwp-footer-callout-section',
+			'settings' => 'lwp-footer-callout-image',
+			'width' => 750,
+			'height' => 500
+	)));
+
+}
+
+add_action('customize_register', 'lwp_footer_callout');
+
 
 
 
